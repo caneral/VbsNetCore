@@ -8,12 +8,7 @@ ENV ASPNETCORE_ENVIRONMENT=Development
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["./StudentInfo.WebApi.csproj", "StudentInfo.WebApi/"]
-COPY ["././StudentInfo.Business/StudentInfo.Business.csproj", "StudentInfo.Business/"]
-COPY ["./StudentInfo.Entity.csproj", "StudentInfo.Entity/"]
-COPY ["ApplicationCore/ApplicationCore.csproj", "ApplicationCore/"]
-COPY ["StudentInfo.DataAccess/StudentInfo.DataAccess.csproj", "StudentInfo.DataAccess/"]
-COPY ["StudentInfo.Infrastructure/StudentInfo.Infrastructure.csproj", "StudentInfo.Infrastructure/"]
+
 RUN dotnet restore "StudentInfo.WebApi/StudentInfo.WebApi.csproj"
 COPY . .
 WORKDIR "/src/StudentInfo.WebApi"
