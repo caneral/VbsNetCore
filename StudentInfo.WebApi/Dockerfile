@@ -6,9 +6,11 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["./StudentInfo.WebApi.csproj", "StudentInfo.WebApi/"]
+
 COPY *.csproj ./
+
 RUN dotnet restore "StudentInfo.WebApi/StudentInfo.WebApi.csproj"
+
 COPY . .
 WORKDIR "/src/StudentInfo.WebApi"
 RUN dotnet build "StudentInfo.WebApi.csproj" -c Release -o /app/build
