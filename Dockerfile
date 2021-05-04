@@ -35,6 +35,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 
 COPY --from=build /publish .
+ENV ASPNETCORE_URLS="http://*:8082"
 ENTRYPOINT ["dotnet", "StudentInfo.WebApi.dll"]
 
 #
