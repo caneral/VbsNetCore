@@ -9,7 +9,7 @@ ENV ASPNETCORE_ENVIRONMENT=Development
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 
-RUN dotnet restore "StudentInfo.WebApi/StudentInfo.WebApi.csproj"
+RUN dotnet restore "./StudentInfo.WebApi.csproj"
 COPY . .
 WORKDIR "/src/StudentInfo.WebApi"
 RUN dotnet build "StudentInfo.WebApi.csproj" -c Release -o /app/build
