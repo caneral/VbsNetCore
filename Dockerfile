@@ -20,6 +20,9 @@ COPY ./StudentInfo.Infrastructure/*.csproj ./StudentInfo.Infrastructure/
 COPY ./StudentInfo.WebApi/*.csproj ./StudentInfo.WebApi/
 COPY ./ApplicationCore/*.csproj ./ApplicationCore/
 
+ENV ASPNETCORE_ENVIRONMENT=Development
+
+
 #Solution dosyasýnýda kopyalýyoruz.
 COPY ./*.sln .
 RUN dotnet restore
