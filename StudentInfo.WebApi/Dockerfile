@@ -9,7 +9,7 @@ WORKDIR /src
 
 COPY *.csproj ./
 
-RUN dotnet restore "StudentInfo.WebApi/StudentInfo.WebApi.csproj"
+RUN dotnet restore "./StudentInfo.WebApi.csproj"
 
 COPY . .
 WORKDIR "/src/StudentInfo.WebApi"
