@@ -13,7 +13,7 @@ RUN dotnet restore "./StudentInfo.WebApi.csproj"
 
 COPY . .
 WORKDIR "/src/StudentInfo.WebApi"
-RUN dotnet build "./StudentInfo.WebApi.csproj" -c Release -o /app/build
+RUN dotnet build "/StudentInfo.WebApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "./StudentInfo.WebApi.csproj" -c Release -o /app/publish
