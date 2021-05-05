@@ -12,6 +12,7 @@ using StudentInfo.Business.Abstract;
 using StudentInfo.Business.Concrete.Auth;
 using StudentInfo.Infrastructure.DI;
 using System;
+using System.Collections.Generic;
 
 namespace StudentInfo.WebApi
 {
@@ -65,7 +66,14 @@ namespace StudentInfo.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
+                app.UseSwagger(c =>
+                {
+                    c.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
+                    {
+                        swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"https://{"/vbsadmin"}" } };
+                    });
+
+                });
                 app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("./v1/swagger.json", "StudentInfo.WebAPI v1");
