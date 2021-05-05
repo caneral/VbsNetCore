@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cTsKHxR+PyuSkD0Znm29RHGiH+aQfcUYi+60QGq77eijh7BtzBHH9sxcZk60fRVQEFtMgowA3mKVCQF+c2smuA==",
+  "dgSpecHash": "bEudINfJEhdHDaGPhlaYMvexr/CTbYbDzJ1/UOb3jCeZhqCm3Svx90ZP3Q6nw8Z7u0CdtCkgVtgW92etw4gu5A==",
   "success": true,
   "projectFilePath": "D:\\BackEnd\\StudentInfoApp\\StudentInfo.WebApi\\StudentInfo.WebApi.csproj",
   "expectedPackageFiles": [
@@ -45,10 +45,10 @@
     "C:\\Users\\caner\\.nuget\\packages\\mysql.data\\8.0.24\\mysql.data.8.0.24.nupkg.sha512",
     "C:\\Users\\caner\\.nuget\\packages\\mysql.entityframeworkcore\\5.0.3\\mysql.entityframeworkcore.5.0.3.nupkg.sha512",
     "C:\\Users\\caner\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
-    "C:\\Users\\caner\\.nuget\\packages\\swashbuckle.aspnetcore\\6.1.2\\swashbuckle.aspnetcore.6.1.2.nupkg.sha512",
-    "C:\\Users\\caner\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.1.2\\swashbuckle.aspnetcore.swagger.6.1.2.nupkg.sha512",
-    "C:\\Users\\caner\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.1.2\\swashbuckle.aspnetcore.swaggergen.6.1.2.nupkg.sha512",
-    "C:\\Users\\caner\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.1.2\\swashbuckle.aspnetcore.swaggerui.6.1.2.nupkg.sha512",
+    "C:\\Users\\caner\\.nuget\\packages\\swashbuckle.aspnetcore\\6.1.4\\swashbuckle.aspnetcore.6.1.4.nupkg.sha512",
+    "C:\\Users\\caner\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.1.4\\swashbuckle.aspnetcore.swagger.6.1.4.nupkg.sha512",
+    "C:\\Users\\caner\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.1.4\\swashbuckle.aspnetcore.swaggergen.6.1.4.nupkg.sha512",
+    "C:\\Users\\caner\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.1.4\\swashbuckle.aspnetcore.swaggerui.6.1.4.nupkg.sha512",
     "C:\\Users\\caner\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\caner\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\caner\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",

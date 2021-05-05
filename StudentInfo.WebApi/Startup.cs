@@ -66,7 +66,11 @@ namespace StudentInfo.WebApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("./v1/swagger.json", "StudentInfo.WebApi v1"));
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("./v1/swagger.json", "StudentInfo.WebAPI v1");
+                    //c.SwaggerEndpoint("/test/swagger/v1/swagger.json", "Test.WebAPI v1");
+                });
             }
 
             app.UseRouting();

@@ -1,53 +1,29 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-#FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
+EXPOSE 80
 
-#FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-#WORKDIR /src
-
-#COPY ["StudentInfo.WebApi/StudentInfo.WebApi.csproj", "StudentInfo.WebApi/"]
-#COPY ["StudentInfo.Business/StudentInfo.Business.csproj", "StudentInfo.Business/"]
-#COPY ["StudentInfo.Entity/StudentInfo.Entity.csproj", "StudentInfo.Entity/"]
-#COPY ["ApplicationCore/ApplicationCore.csproj", "ApplicationCore/"]
-#COPY ["StudentInfo.DataAccess/StudentInfo.DataAccess.csproj", "StudentInfo.DataAccess/"]
-#COPY ["StudentInfo.Infrastructure/StudentInfo.Infrastructure.csproj", "StudentInfo.Infrastructure/"]
-
-#Tüm katmanlarýn .csproj dosyalarýný uygun dizinlere tek tek kopyalýyoruz.
-COPY ./StudentInfo.Business/*.csproj ./StudentInfo.Business/
-COPY ./StudentInfo.DataAccess/*.csproj ./StudentInfo.DataAccess/
-COPY ./StudentInfo.Entity/*.csproj ./StudentInfo.Entity/
-COPY ./StudentInfo.Infrastructure/*.csproj ./StudentInfo.Infrastructure/
-COPY ./StudentInfo.WebApi/*.csproj ./StudentInfo.WebApi/
-COPY ./ApplicationCore/*.csproj ./ApplicationCore/
 
 ENV ASPNETCORE_ENVIRONMENT=Development
 
-
-#Solution dosyasýnýda kopyalýyoruz.
-COPY ./*.sln .
-RUN dotnet restore
-#Kütüphaneleri restore ettikten sonra geriye kalan ne var ne yok kopyalýyoruz.
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
+COPY ["StudentInfo.WebApi/StudentInfo.WebApi.csproj", "StudentInfo.WebApi/"]
+COPY ["StudentInfo.Business/StudentInfo.Business.csproj", "StudentInfo.Business/"]
+COPY ["StudentInfo.Entity/StudentInfo.Entity.csproj", "StudentInfo.Entity/"]
+COPY ["ApplicationCore/ApplicationCore.csproj", "ApplicationCore/"]
+COPY ["StudentInfo.DataAccess/StudentInfo.DataAccess.csproj", "StudentInfo.DataAccess/"]
+COPY ["StudentInfo.Infrastructure/StudentInfo.Infrastructure.csproj", "StudentInfo.Infrastructure/"]
+RUN dotnet restore "StudentInfo.WebApi/StudentInfo.WebApi.csproj"
 COPY . .
-#Sadece web uygulamasýný/katmanýný publish ediyoruz.
-RUN dotnet publish ./StudentInfo.WebApi/*.csproj -o /publish/
-#Runtime yüklüyoruz.
-FROM mcr.microsoft.com/dotnet/aspnet:5.0
+WORKDIR "/src/StudentInfo.WebApi"
+RUN dotnet build "StudentInfo.WebApi.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "StudentInfo.WebApi.csproj" -c Release -o /app/publish
+
+FROM base AS final
 WORKDIR /app
-
-COPY --from=build /publish .
-ENV ASPNETCORE_URLS="http://*:8082"
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "StudentInfo.WebApi.dll"]
-
-#
-#RUN dotnet restore "StudentInfo.WebApi/StudentInfo.WebApi.csproj"
-#COPY . .
-#WORKDIR "/src/StudentInfo.WebApi"
-#RUN dotnet build "StudentInfo.WebApi.csproj" -c Release -o /app/build
-#
-#FROM build AS publish
-#RUN dotnet publish "StudentInfo.WebApi.csproj" -c Release -o /app/publish
-#
-#FROM base AS final
-#WORKDIR /app
-#COPY --from=publish /app/publish .
-#ENTRYPOINT ["dotnet", "StudentInfo.WebApi.dll"]
