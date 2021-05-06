@@ -28,6 +28,17 @@ namespace StudentInfo.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder =>
+                    // Servisi belirli bir adresten gelen taleplere ama
+                    //builder.WithOrigins("http://localhost:3000","http://94.73.164.170:")
+                    // Servisi tm taleplere ama
+                     builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -63,6 +74,7 @@ namespace StudentInfo.WebApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("CorsPolicy");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -79,6 +91,11 @@ namespace StudentInfo.WebApi
                     c.SwaggerEndpoint("./v1/swagger.json", "StudentInfo.WebAPI v1");
                     //c.SwaggerEndpoint("/test/swagger/v1/swagger.json", "Test.WebAPI v1");
                 });
+                app.UseCors(option =>
+                 option.AllowAnyOrigin()
+                     .AllowAnyMethod()
+                      .AllowAnyHeader()
+         );
             }
 
             app.UseRouting();
