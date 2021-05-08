@@ -13,6 +13,7 @@ namespace StudentInfo.Infrastructure.DI
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<IHomeWorkService, HomeWorkService>();
             services.AddScoped<ITokenHelper, TokenHelper>();
             return services;
         }

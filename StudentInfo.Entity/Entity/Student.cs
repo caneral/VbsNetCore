@@ -33,6 +33,11 @@ namespace StudentInfo.Entity.Entity
         /// Öğrenci Okul Numarası
         /// </summary>
         public string Number { get; set; }
+        /// <summary>
+        /// Öğrencinin Sınıfı
+        /// </summary>
+        public int ClassId { get; set; }
+        public Class ClassFK { get; set; }
 
         /// <summary>
         /// Veli Id 

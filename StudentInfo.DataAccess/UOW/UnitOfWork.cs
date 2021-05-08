@@ -16,6 +16,7 @@ namespace StudentInfo.DataAccess.UOW
         private EFStudentRepo _studentRepo;
         private EFStudentTeacherRepo _studentTeacherRepo;
         private EFTeacherRepo _teacherRepo;
+        private EFHomeWorkRepo _homeWorkRepo;
         private EFAppUserRepo _appUserRepository;
         private EFAppClaimRepo _appClaimRepository;
         private EFAppUserClaimRepo _appUserClaimRepository;
@@ -25,6 +26,7 @@ namespace StudentInfo.DataAccess.UOW
         public IStudentRepo Students => _studentRepo ??= new EFStudentRepo(_dbContext);
         public IStudentTeacherRepo StudentTeachers => _studentTeacherRepo ??= new EFStudentTeacherRepo(_dbContext);
         public ITeacherRepo Teachers => _teacherRepo ??= new EFTeacherRepo(_dbContext);
+        public IHomeWorkRepo HomeWorks => _homeWorkRepo ??= new EFHomeWorkRepo(_dbContext);
         public IAppUserRepo AppUsers => _appUserRepository ??= new EFAppUserRepo(_dbContext);
         public IAppClaimRepo AppClaims => _appClaimRepository ??= new EFAppClaimRepo(_dbContext);
         public IAppUserClaimRepo AppUserClaims => _appUserClaimRepository ??= new EFAppUserClaimRepo(_dbContext);
