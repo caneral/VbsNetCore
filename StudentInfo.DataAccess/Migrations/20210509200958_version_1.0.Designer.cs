@@ -9,8 +9,8 @@ using StudentInfo.DataAccess.EF.Concrete.Context;
 namespace StudentInfo.DataAccess.Migrations
 {
     [DbContext(typeof(StudentInfoDbContext))]
-    [Migration("20210509200409_version2.1")]
-    partial class version21
+    [Migration("20210509200958_version_1.0")]
+    partial class version_10
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -70,7 +70,7 @@ namespace StudentInfo.Business.Concrete.Auth
             }
             else if (userRegisterDTO.UserRole == 2)
             {
-                var claim = _appClaimService.GetClaim(AppClaimEnum.Parent.ToString());
+                var claim = _appClaimService.GetClaim(AppClaimEnum.Student.ToString());
                 newUser.AppUserClaims.Add(new AppUserClaim
                 {
                     AppClaimId = claim.Id

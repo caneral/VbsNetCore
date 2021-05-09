@@ -4,7 +4,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace StudentInfo.DataAccess.Migrations
 {
-    public partial class version10 : Migration
+    public partial class version_10 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,7 +33,7 @@ namespace StudentInfo.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    UserName = table.Column<string>(type: "text", nullable: true),
+                    TCNumber = table.Column<string>(type: "text", nullable: true),
                     FirstName = table.Column<string>(type: "text", nullable: true),
                     LastName = table.Column<string>(type: "text", nullable: true),
                     Email = table.Column<string>(type: "text", nullable: true),
@@ -50,6 +50,25 @@ namespace StudentInfo.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Classes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    CreatedUserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    ModifiedUserId = table.Column<int>(type: "int", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Classes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -127,6 +146,34 @@ namespace StudentInfo.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HomeWorks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    CourseName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    HomeworkSubject = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    HomeworkDesc = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
+                    ClassId = table.Column<int>(type: "int", nullable: false),
+                    CreatedUserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    ModifiedUserId = table.Column<int>(type: "int", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HomeWorks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HomeWorks_Classes_ClassId",
+                        column: x => x.ClassId,
+                        principalTable: "Classes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Students",
                 columns: table => new
                 {
@@ -136,6 +183,7 @@ namespace StudentInfo.DataAccess.Migrations
                     Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Surname = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Number = table.Column<string>(type: "varchar(11)", maxLength: 11, nullable: false),
+                    ClassId = table.Column<int>(type: "int", nullable: false),
                     ParentId = table.Column<int>(type: "int", nullable: false),
                     CreatedUserId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false),
@@ -148,6 +196,12 @@ namespace StudentInfo.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_Students", x => x.Id);
                     table.UniqueConstraint("AK_Students_TCNumber", x => x.TCNumber);
+                    table.ForeignKey(
+                        name: "FK_Students_Classes_ClassId",
+                        column: x => x.ClassId,
+                        principalTable: "Classes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Students_Parents_ParentId",
                         column: x => x.ParentId,
@@ -232,6 +286,11 @@ namespace StudentInfo.DataAccess.Migrations
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_HomeWorks_ClassId",
+                table: "HomeWorks",
+                column: "ClassId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Messages_StudentId",
                 table: "Messages",
                 column: "StudentId");
@@ -240,6 +299,11 @@ namespace StudentInfo.DataAccess.Migrations
                 name: "IX_Messages_TeacherId",
                 table: "Messages",
                 column: "TeacherId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Students_ClassId",
+                table: "Students",
+                column: "ClassId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_ParentId",
@@ -263,6 +327,9 @@ namespace StudentInfo.DataAccess.Migrations
                 name: "AppUserClaims");
 
             migrationBuilder.DropTable(
+                name: "HomeWorks");
+
+            migrationBuilder.DropTable(
                 name: "Messages");
 
             migrationBuilder.DropTable(
@@ -279,6 +346,9 @@ namespace StudentInfo.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Teachers");
+
+            migrationBuilder.DropTable(
+                name: "Classes");
 
             migrationBuilder.DropTable(
                 name: "Parents");
