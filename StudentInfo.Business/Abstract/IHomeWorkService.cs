@@ -8,6 +8,7 @@ namespace StudentInfo.Business.Abstract
     public interface IHomeWorkService
     {
         Task<int> AddHomeWork(HomeWorkAddDTO homeWorkAddDTO);
+        Task<List<HomeWorkListDTO>> GetHomeWorkList();
 
         /// <summary>
         /// Mesajları Listeleme (Öğrenci id varsa özel mesajları da dahil et)
@@ -16,6 +17,6 @@ namespace StudentInfo.Business.Abstract
         //Task<int> DeleteMessage(int id);
 
         //Task<int> UpdateMessage(int id, MessageUpdateDTO messageUpdate);
-       
+
     }
 }

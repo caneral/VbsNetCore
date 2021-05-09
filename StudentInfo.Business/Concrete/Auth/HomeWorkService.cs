@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Utility.Mapper;
+using Microsoft.EntityFrameworkCore;
 using StudentInfo.Business.Abstract;
 using StudentInfo.DataAccess.UOW;
 using StudentInfo.Entity.DTO.HomeWork;
@@ -26,6 +27,12 @@ namespace StudentInfo.Business.Concrete.Auth
             var homework = _mapper.Map<HomeWorkAddDTO, HomeWork>(homeWorkAddDTO);
             await _unitOfWork.HomeWorks.AddAsync(homework);
             return await _unitOfWork.SaveAsync();
+        }
+
+        public async Task<List<HomeWorkListDTO>> GetHomeWorkList()
+        {
+            return await _unitOfWork.HomeWorks.GetHomeWorkList();
+
         }
     }
 }

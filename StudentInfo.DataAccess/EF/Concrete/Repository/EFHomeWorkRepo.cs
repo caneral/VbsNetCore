@@ -1,6 +1,7 @@
 ﻿using ApplicationCore.Data.EF;
 using Microsoft.EntityFrameworkCore;
 using StudentInfo.DataAccess.EF.Abstract;
+using StudentInfo.Entity.DTO.HomeWork;
 using StudentInfo.Entity.Entity;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,20 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
     {
         public EFHomeWorkRepo(DbContext dbContext) : base(dbContext)
         {
-
+            
         }
 
+        public async Task<List<HomeWorkListDTO>> GetHomeWorkList()
+        {
+            return await GetListQueryable(p => !p.IsDeleted, p => p.ClassFK)
+                     .Select(p => new HomeWorkListDTO
+                     {
+                         Id = p.Id,
+                         CourseName = p.CourseName,
+                         HomeworkSubject = p.HomeworkSubject,
+                         HomeworkDesc = p.HomeworkDesc,
+                         ClassName = p.ClassFK.Name
+                     }).ToListAsync();
+        }
     }
 }

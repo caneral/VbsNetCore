@@ -29,5 +29,14 @@ namespace StudentInfo.WebApi.Controllers
             return result > 0 ? StatusCode(StatusCodes.Status201Created) : BadRequest();
         }
 
+        [HttpGet("HomeWorkList")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+
+        public async Task<ActionResult<string>> ListHomeWork( )
+        {
+            var result = await _homeWorkService.GetHomeWorkList();
+            return Ok("Ödevler listelendi.");
+        }
+
     }
 }
