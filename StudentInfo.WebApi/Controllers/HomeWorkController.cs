@@ -35,7 +35,7 @@ namespace StudentInfo.WebApi.Controllers
         public async Task<ActionResult<string>> ListHomeWork( )
         {
             var result = await _homeWorkService.GetHomeWorkList();
-            return Ok("Ödevler listelendi.");
+            return Ok(result);
         }
 
     }
