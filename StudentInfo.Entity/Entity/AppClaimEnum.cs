@@ -8,7 +8,7 @@ namespace StudentInfo.Entity.Entity
         Teacher = 1,
 
         [Display(Name = "Öğrenci")]
-        Parent = 2,
+        Student = 2,
 
         [Display(Name = "Admin")]
         Admin = 3 
