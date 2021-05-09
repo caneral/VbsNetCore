@@ -9,6 +9,7 @@ namespace StudentInfo.Business.Abstract
     public interface IClassService
     {
         Task<int> AddClass(ClassAddDTO classAddDTO);
+        Task<List<ClassListDTO>> GetClassList();
 
 
     }

@@ -31,5 +31,10 @@ namespace StudentInfo.Business.Concrete.Auth
             await _unitOfWork.Classes.AddAsync(newClass);
             return await _unitOfWork.SaveAsync();
         }
+
+        public async Task<List<ClassListDTO>> GetClassList()
+        {
+            return await _unitOfWork.Classes.GetClassList();
+        }
     }
 }

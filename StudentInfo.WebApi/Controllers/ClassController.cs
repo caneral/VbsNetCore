@@ -29,5 +29,13 @@ namespace StudentInfo.WebApi.Controllers
             var result = await _classService.AddClass(classAddDTO);
             return result > 0 ? StatusCode(StatusCodes.Status201Created) : BadRequest();
         }
+
+        [HttpGet("ClassList")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<string>> ListClass()
+        {
+            var result = await _classService.GetClassList();
+            return Ok(result);
+        }
     }
 }

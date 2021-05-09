@@ -1,6 +1,7 @@
 ﻿using ApplicationCore.Data.EF;
 using Microsoft.EntityFrameworkCore;
 using StudentInfo.DataAccess.EF.Abstract;
+using StudentInfo.Entity.DTO.Class;
 using StudentInfo.Entity.DTO.HomeWork;
 using StudentInfo.Entity.Entity;
 using System;
@@ -17,7 +18,15 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
         {
             
         }
-
+        public async Task<List<ClassListDTO>> GetClassList()
+        {
+            return await GetListQueryable(p => !p.IsDeleted)
+                     .Select(p => new ClassListDTO
+                     {
+                         Id = p.Id,
+                         Name = p.Name
+                     }).ToListAsync();
+        }
 
     }
 }
