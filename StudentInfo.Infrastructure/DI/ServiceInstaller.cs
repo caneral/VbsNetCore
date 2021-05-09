@@ -14,6 +14,7 @@ namespace StudentInfo.Infrastructure.DI
             services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IHomeWorkService, HomeWorkService>();
+            services.AddScoped<IClassService, ClassService>();
             services.AddScoped<ITokenHelper, TokenHelper>();
             return services;
         }
