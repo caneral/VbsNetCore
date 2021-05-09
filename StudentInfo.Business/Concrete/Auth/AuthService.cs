@@ -30,7 +30,7 @@ namespace StudentInfo.Business.Concrete.Auth
 
         public async Task<AppUser> Login(AppUserLoginDTO userForLoginDTO)
         {
-            var appUser = await _appUserService.GetByUserName(userForLoginDTO.UserName);
+            var appUser = await _appUserService.GetByTCNumber(userForLoginDTO.TCNumber);
             if (appUser == null)
             {
                 return null;
@@ -51,7 +51,7 @@ namespace StudentInfo.Business.Concrete.Auth
     out byte[] passwordSalt);
             var newUser = new AppUser
             {
-                UserName = userRegisterDTO.UserName.ToUpper(),
+                TCNumber = userRegisterDTO.TCNumber,
                 Email = userRegisterDTO.Email,
                 FirstName = userRegisterDTO.FirstName,
                 LastName = userRegisterDTO.LastName,

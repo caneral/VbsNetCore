@@ -8,6 +8,6 @@ namespace StudentInfo.Business.Abstract
     {
         Task<int> Add(AppUser user);
         Task<List<AppClaim>> GetUserClaimsByUserId(int userId);
-        Task<AppUser> GetByUserName(string userName);
+        Task<AppUser> GetByTCNumber(string tcNumber);
     }
 }

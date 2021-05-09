@@ -22,10 +22,10 @@ namespace StudentInfo.Business.Concrete.Auth
             await _unitOfWork.AppUsers.AddAsync(user);
             return await _unitOfWork.SaveAsync();
         }
-        public async Task<AppUser> GetByUserName(string userName)
+        public async Task<AppUser> GetByTCNumber(string tcNumber)
         {
-            var aa = await _unitOfWork.AppUsers.GetAsync(p => p.UserName == userName);
-            return await _unitOfWork.AppUsers.GetAsync(p => p.UserName == userName);
+            var aa = await _unitOfWork.AppUsers.GetAsync(p => p.TCNumber == tcNumber);
+            return await _unitOfWork.AppUsers.GetAsync(p => p.TCNumber == tcNumber);
         }
     }
 }
