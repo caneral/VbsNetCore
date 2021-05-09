@@ -110,7 +110,7 @@ namespace ApplicationCore.Data.EF
         public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter, params Expression<Func<TEntity, object>>[] includeProperties)
         {
             IQueryable<TEntity> query = _dbContext.Set<TEntity>();
-            query.Where(filter);
+            var sorgu = query.Where(filter);
             if (includeProperties.Any())
             {
                 foreach (var includeProperty in includeProperties)
@@ -118,7 +118,7 @@ namespace ApplicationCore.Data.EF
                     query.Include(includeProperty);
                 }
             }
-            return await query.SingleOrDefaultAsync();
+            return await sorgu.SingleOrDefaultAsync();
         }
 
         public TEntity GetById(int id)
