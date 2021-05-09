@@ -24,5 +24,9 @@ namespace StudentInfo.Entity.DTO.Student
         /// Veli Id 
         /// </summary>
         public int ParentId { get; set; }
+        /// <summary>
+        /// Sınıf Id
+        /// </summary>
+        public int ClassId { get; set; }
     }
 }

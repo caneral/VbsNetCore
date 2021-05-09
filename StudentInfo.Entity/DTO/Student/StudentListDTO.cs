@@ -28,6 +28,7 @@ namespace StudentInfo.Entity.DTO.Student
         /// Öğrenci Okul Numarası
         /// </summary>
         public string Number { get; set; }
+        public string ClassName { get; set; }
 
         /// <summary>
         /// Veli Ad-Soyad

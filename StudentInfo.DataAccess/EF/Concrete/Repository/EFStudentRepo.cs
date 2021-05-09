@@ -27,6 +27,7 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
                     Surname = p.Surname,
                     Number = p.Number,
                     TCNumber = p.TCNumber,
+                    ClassName = p.ClassFK.Name,
                     ParentName = p.ParentFK.Name,
                     ParentSurname = p.ParentFK.Surname
                 }).AsEnumerable();
@@ -40,6 +41,7 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
             currentStudent.Surname = studentUpdateDTO.Surname;
             currentStudent.Number = studentUpdateDTO.Number;
             currentStudent.ParentId = studentUpdateDTO.ParentId;
+            currentStudent.ClassId = studentUpdateDTO.ClassId;
             currentStudent.ModifiedDate = DateTime.Now;
 
         }

@@ -20,6 +20,10 @@ namespace StudentInfo.Entity.DTO.Student
         /// Öğrenci Okul Numarası
         /// </summary>
         public string Number { get; set; }
+        /// <summary>
+        /// Sınıf id
+        /// </summary>
+        public int ClassId { get; set; }
 
         /// <summary>
         /// Veli Id 
