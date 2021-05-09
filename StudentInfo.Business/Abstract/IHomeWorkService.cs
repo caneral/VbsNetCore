@@ -9,7 +9,12 @@ namespace StudentInfo.Business.Abstract
     {
         Task<int> AddHomeWork(HomeWorkAddDTO homeWorkAddDTO);
         Task<List<HomeWorkListDTO>> GetHomeWorkList();
-
+        /// <summary>
+        /// Sınıf id ye göre listeleme
+        /// </summary>
+        /// <param name="classId"></param>
+        /// <returns></returns>
+        Task<List<HomeWorkListDTO>> GetHomeWorkWithClass(int classId);
         /// <summary>
         /// Mesajları Listeleme (Öğrenci id varsa özel mesajları da dahil et)
         /// </summary>

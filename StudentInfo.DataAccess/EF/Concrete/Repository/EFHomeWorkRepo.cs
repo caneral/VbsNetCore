@@ -30,5 +30,18 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
                          ClassName = p.ClassFK.Name
                      }).ToListAsync();
         }
+
+        public async Task<List<HomeWorkListDTO>> GetHomeWorkWithClass(int classId)
+        {
+            return await GetListQueryable(p => !p.IsDeleted && (p.ClassId == classId) , p => p.ClassFK)
+                     .Select(p => new HomeWorkListDTO
+                     {
+                         Id = p.Id,
+                         CourseName = p.CourseName,
+                         HomeworkSubject = p.HomeworkSubject,
+                         HomeworkDesc = p.HomeworkDesc,
+                         ClassName = p.ClassFK.Name
+                     }).ToListAsync();
+        }
     }
 }

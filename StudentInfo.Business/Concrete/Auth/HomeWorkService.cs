@@ -34,5 +34,10 @@ namespace StudentInfo.Business.Concrete.Auth
             return await _unitOfWork.HomeWorks.GetHomeWorkList();
 
         }
+
+        public async Task<List<HomeWorkListDTO>> GetHomeWorkWithClass(int classId)
+        {
+            return await _unitOfWork.HomeWorks.GetHomeWorkWithClass(classId);
+        }
     }
 }

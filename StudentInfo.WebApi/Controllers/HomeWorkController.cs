@@ -38,5 +38,13 @@ namespace StudentInfo.WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpGet("HomeWorkListWithClass")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+
+        public async Task<ActionResult<string>> ListHomeWorkWithClass(int classId)
+        {
+            var result = await _homeWorkService.GetHomeWorkWithClass(classId);
+            return Ok(result);
+        }
     }
 }

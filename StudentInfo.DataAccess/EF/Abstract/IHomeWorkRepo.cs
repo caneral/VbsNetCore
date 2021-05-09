@@ -12,6 +12,8 @@ namespace StudentInfo.DataAccess.EF.Abstract
     public interface IHomeWorkRepo: IBaseRepo<HomeWork>
     {
         Task<List<HomeWorkListDTO>> GetHomeWorkList();
+        Task<List<HomeWorkListDTO>> GetHomeWorkWithClass(int classId);
+
 
     }
 }
