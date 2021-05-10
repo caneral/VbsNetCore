@@ -46,5 +46,10 @@ namespace StudentInfo.Business.Concrete.Auth
         {
             return _unitOfWork.HomeWorks.GetTotalHomeWorkCount();
         }
+
+        public async Task<List<HomeWorkListDTO>> GetLastAdded5HomeWorks()
+        {
+            return await _unitOfWork.HomeWorks.GetLastAdded5HomeWorks();
+        }
     }
 }
