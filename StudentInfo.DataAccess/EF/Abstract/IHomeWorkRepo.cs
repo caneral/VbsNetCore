@@ -14,6 +14,7 @@ namespace StudentInfo.DataAccess.EF.Abstract
         Task<List<HomeWorkListDTO>> GetHomeWorkList();
         Task<List<HomeWorkListDTO>> GetHomeWorkWithClass(int classId);
         Task<int> GetTotalHomeWorkCount();
+        Task<List<HomeWorkListDTO>> GetLastAdded5HomeWorks();
 
     }
 }

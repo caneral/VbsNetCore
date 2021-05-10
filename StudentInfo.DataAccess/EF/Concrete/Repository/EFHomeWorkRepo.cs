@@ -49,6 +49,21 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
             return await CountAsync(p => !p.IsDeleted);
         }
 
+        public async Task<List<HomeWorkListDTO>> GetLastAdded5HomeWorks()
+        {
+            return await GetListQueryable(p => !p.IsDeleted, p => p.ClassFK)
+                .OrderByDescending(p => p.Id)
+                .Take(5)
+                .Select(p => new HomeWorkListDTO
+                {
+                    Id = p.Id,
+                    CourseName = p.CourseName,
+                    HomeworkSubject = p.HomeworkSubject,
+                    HomeworkDesc = p.HomeworkDesc,
+                    ClassName = p.ClassFK.Name
+                }).ToListAsync();
+        }
+
 
     }
 }
