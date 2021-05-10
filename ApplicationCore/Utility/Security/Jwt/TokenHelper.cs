@@ -51,7 +51,7 @@ namespace ApplicationCore.Utility.Security.Jwt
         private IEnumerable<Claim> SetClaims(AppUser user, List<AppClaim> appClaims)
         {
             var claims = new List<Claim>();
-            claims.AddNameIdentifier(user.Id.ToString());
+            claims.AddNameIdentifier(user.TCNumber.ToString());
             claims.AddEmail(user.Email);
             claims.AddName($"{user.FirstName} {user.LastName}");
             claims.AddRoles(appClaims.Select(c => c.Name).ToArray());
