@@ -41,9 +41,9 @@ namespace StudentInfo.WebApi.Controllers
         [HttpGet("HomeWorkListWithClass")]
         [ProducesResponseType(StatusCodes.Status200OK)]
 
-        public async Task<ActionResult<string>> ListHomeWorkWithClass(string tcNumber)
+        public async Task<ActionResult<string>> ListHomeWorkWithClass(int userId)
         {
-            var result = await _homeWorkService.GetHomeWorkWithClass(tcNumber);
+            var result = await _homeWorkService.GetHomeWorkWithClass(userId);
             return Ok(result);
         }
 
