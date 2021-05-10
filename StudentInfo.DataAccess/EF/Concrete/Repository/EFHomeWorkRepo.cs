@@ -44,5 +44,11 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
                          ClassName = p.ClassFK.Name
                      }).ToListAsync();
         }
+        public async Task<int> GetTotalHomeWorkCount()
+        {
+            return await CountAsync(p => !p.IsDeleted);
+        }
+
+
     }
 }
