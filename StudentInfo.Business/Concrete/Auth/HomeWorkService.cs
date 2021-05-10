@@ -41,5 +41,10 @@ namespace StudentInfo.Business.Concrete.Auth
             var userClass = _unitOfWork.Students.GetAsync(p => p.TCNumber == tc.Result.TCNumber);
             return await _unitOfWork.HomeWorks.GetHomeWorkWithClass(userClass.Result.ClassId);
         }
+
+        public Task<int> GetTotalHomeWorkCount()
+        {
+            return _unitOfWork.HomeWorks.GetTotalHomeWorkCount();
+        }
     }
 }

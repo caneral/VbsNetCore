@@ -28,16 +28,22 @@ namespace StudentInfo.WebApi.Controllers
             var result = await _homeWorkService.AddHomeWork(homeWorkAddDTO);
             return result > 0 ? StatusCode(StatusCodes.Status201Created) : BadRequest();
         }
-
+        /// <summary>
+        /// Ödevleri Listele
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("HomeWorkList")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-
         public async Task<ActionResult<string>> ListHomeWork( )
         {
             var result = await _homeWorkService.GetHomeWorkList();
             return Ok(result);
         }
-
+        /// <summary>
+        /// Kullanıcı id ye göre ödev getir
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpGet("HomeWorkListWithClass")]
         [ProducesResponseType(StatusCodes.Status200OK)]
 
