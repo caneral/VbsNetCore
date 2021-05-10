@@ -35,9 +35,10 @@ namespace StudentInfo.Business.Concrete.Auth
 
         }
 
-        public async Task<List<HomeWorkListDTO>> GetHomeWorkWithClass(int classId)
+        public async Task<List<HomeWorkListDTO>> GetHomeWorkWithClass(string tcNumber)
         {
-            return await _unitOfWork.HomeWorks.GetHomeWorkWithClass(classId);
+            var abc = _unitOfWork.Students.GetAsync(p => p.TCNumber == tcNumber);
+            return await _unitOfWork.HomeWorks.GetHomeWorkWithClass(abc.Result.ClassId);
         }
     }
 }
