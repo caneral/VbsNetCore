@@ -33,6 +33,7 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
 
         public async Task<List<HomeWorkListDTO>> GetHomeWorkWithClass(int classId)
         {
+            
             return await GetListQueryable(p => !p.IsDeleted && (p.ClassId == classId) , p => p.ClassFK)
                      .Select(p => new HomeWorkListDTO
                      {

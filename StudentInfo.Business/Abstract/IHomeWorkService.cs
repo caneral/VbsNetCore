@@ -14,7 +14,7 @@ namespace StudentInfo.Business.Abstract
         /// </summary>
         /// <param name="classId"></param>
         /// <returns></returns>
-        Task<List<HomeWorkListDTO>> GetHomeWorkWithClass(int classId);
+        Task<List<HomeWorkListDTO>> GetHomeWorkWithClass(string tcNumber);
         /// <summary>
         /// Mesajları Listeleme (Öğrenci id varsa özel mesajları da dahil et)
         /// </summary>
