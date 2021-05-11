@@ -9,6 +9,7 @@ namespace StudentInfo.DataAccess.EF.Abstract
     public interface IStudentRepo : IBaseRepo<Student>
     {
         IEnumerable<StudentListDTO> ListStudent();
+        IEnumerable<StudentListDTO> ListStudentWithClass(string classN);
         Task UpdateStudent(int id, StudentUpdateDTO studentUpdateDTO);
         Task<int> GetTotalStudentCount();
 

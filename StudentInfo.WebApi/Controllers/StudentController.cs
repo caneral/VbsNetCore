@@ -25,6 +25,14 @@ namespace StudentInfo.WebApi.Controllers
             return Ok(_studentService.ListStudent());
         }
 
+        [HttpGet("StudentListWithClass")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<IEnumerable<StudentListDTO>> ListStudentWithClass(string classN)
+        {
+            return Ok(_studentService.ListStudentWithClass(classN));
+        }
+
         [HttpPost("StudentAdd")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -36,6 +36,10 @@ namespace StudentInfo.Business.Concrete.Auth
         {
             return _unitOfWork.Students.ListStudent();
         }
+        public IEnumerable<StudentListDTO> ListStudentWithClass(string classN)
+        {
+            return _unitOfWork.Students.ListStudentWithClass(classN);
+        }
 
         public Task<int> UpdateStudent(int id, StudentUpdateDTO studentUpdateDTO)
         {
