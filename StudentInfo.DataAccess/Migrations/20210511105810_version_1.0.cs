@@ -217,7 +217,8 @@ namespace StudentInfo.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Desc = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
-                    StudentId = table.Column<int>(type: "int", nullable: true),
+                    ClassId = table.Column<int>(type: "int", nullable: false),
+                    ClassFKId = table.Column<int>(type: "int", nullable: true),
                     TeacherId = table.Column<int>(type: "int", nullable: false),
                     CreatedUserId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false),
@@ -230,8 +231,8 @@ namespace StudentInfo.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_Messages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Messages_Students_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_Messages_Students_ClassFKId",
+                        column: x => x.ClassFKId,
                         principalTable: "Students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -291,9 +292,9 @@ namespace StudentInfo.DataAccess.Migrations
                 column: "ClassId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Messages_StudentId",
+                name: "IX_Messages_ClassFKId",
                 table: "Messages",
-                column: "StudentId");
+                column: "ClassFKId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Messages_TeacherId",

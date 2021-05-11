@@ -4,7 +4,7 @@ using System;
 namespace StudentInfo.Entity.Entity
 {
     /// <summary>
-    /// Duyuru, Mesaj, Ödev 
+    /// Duyuru
     /// </summary>
     public class Message : BaseEntity, IAudit
     {
@@ -19,10 +19,10 @@ namespace StudentInfo.Entity.Entity
         public string Desc { get; set; }
 
         /// <summary>
-        /// Öğrenci Id
+        /// Sınıf Id
         /// </summary>
-        public int? StudentId { get; set; }
-        public Student StudentFK { get; set; }
+        public int ClassId { get; set; }
+        public Student ClassFK { get; set; }
 
         /// <summary>
         /// Öğretmen Id

@@ -86,6 +86,7 @@ namespace StudentInfo.WebApi
                     });
 
                 });
+                //app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("./v1/swagger.json", "StudentInfo.WebAPI v1");
