@@ -32,6 +32,21 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
                     ParentSurname = p.ParentFK.Surname
                 }).AsEnumerable();
         }
+        public IEnumerable<StudentListDTO> ListStudentWithClass(string classN)
+        {
+            return GetListQueryable(p => !p.IsDeleted && p.ClassFK.Name == classN, p => p.ParentFK)
+                .Select(p => new StudentListDTO
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Surname = p.Surname,
+                    Number = p.Number,
+                    TCNumber = p.TCNumber,
+                    ClassName = p.ClassFK.Name,
+                    ParentName = p.ParentFK.Name,
+                    ParentSurname = p.ParentFK.Surname
+                }).AsEnumerable();
+        }
 
         public async Task UpdateStudent(int id, StudentUpdateDTO studentUpdateDTO)
         {
