@@ -10,7 +10,7 @@
         /// <summary>
         /// Öğrenci Id
         /// </summary>
-        public int? StudentId { get; set; }
+        public int ClassId { get; set; }
 
         /// <summary>
         /// Öğretmen Id
