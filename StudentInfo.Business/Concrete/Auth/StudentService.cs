@@ -42,5 +42,9 @@ namespace StudentInfo.Business.Concrete.Auth
             _unitOfWork.Students.UpdateStudent(id, studentUpdateDTO);
             return _unitOfWork.SaveAsync();
         }
+        public Task<int> GetTotalStudentCount()
+        {
+            return _unitOfWork.Students.GetTotalStudentCount();
+        }
     }
 }

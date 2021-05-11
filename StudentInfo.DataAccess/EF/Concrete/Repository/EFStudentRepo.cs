@@ -45,5 +45,10 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
             currentStudent.ModifiedDate = DateTime.Now;
 
         }
+
+        public async Task<int> GetTotalStudentCount()
+        {
+            return await CountAsync(p => !p.IsDeleted);
+        }
     }
 }

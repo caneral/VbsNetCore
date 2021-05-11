@@ -10,5 +10,7 @@ namespace StudentInfo.DataAccess.EF.Abstract
     {
         IEnumerable<StudentListDTO> ListStudent();
         Task UpdateStudent(int id, StudentUpdateDTO studentUpdateDTO);
+        Task<int> GetTotalStudentCount();
+
     }
 }

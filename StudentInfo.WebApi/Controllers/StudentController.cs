@@ -52,5 +52,13 @@ namespace StudentInfo.WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetTotalStudentCount")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<string>> GetTotalStudentCount()
+        {
+            var result = await _studentService.GetTotalHomeWorkCount();
+            return Ok(result);
+        }
+
     }
 }
