@@ -11,5 +11,7 @@ namespace StudentInfo.Business.Abstract
         Task<int> AddStudent(StudentAddDTO studentAddDTO);
         Task<int> UpdateStudent(int id, StudentUpdateDTO studentUpdateDTO);
         Task<int> DeleteStudent(int id);
+        Task<int> GetTotalStudentCount();
+
     }
 }
