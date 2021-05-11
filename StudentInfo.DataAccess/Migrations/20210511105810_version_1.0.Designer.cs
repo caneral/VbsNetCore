@@ -9,7 +9,7 @@ using StudentInfo.DataAccess.EF.Concrete.Context;
 namespace StudentInfo.DataAccess.Migrations
 {
     [DbContext(typeof(StudentInfoDbContext))]
-    [Migration("20210509200958_version_1.0")]
+    [Migration("20210511105810_version_1.0")]
     partial class version_10
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -229,6 +229,12 @@ namespace StudentInfo.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int?>("ClassFKId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime");
 
@@ -252,15 +258,12 @@ namespace StudentInfo.DataAccess.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("ClassFKId");
 
                     b.HasIndex("TeacherId");
 
@@ -484,9 +487,9 @@ namespace StudentInfo.DataAccess.Migrations
 
             modelBuilder.Entity("StudentInfo.Entity.Entity.Message", b =>
                 {
-                    b.HasOne("StudentInfo.Entity.Entity.Student", "StudentFK")
+                    b.HasOne("StudentInfo.Entity.Entity.Student", "ClassFK")
                         .WithMany()
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("ClassFKId");
 
                     b.HasOne("StudentInfo.Entity.Entity.Teacher", "TeacherFK")
                         .WithMany()
@@ -494,7 +497,7 @@ namespace StudentInfo.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("StudentFK");
+                    b.Navigation("ClassFK");
 
                     b.Navigation("TeacherFK");
                 });

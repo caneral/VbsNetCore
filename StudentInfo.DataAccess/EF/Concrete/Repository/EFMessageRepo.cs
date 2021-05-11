@@ -19,9 +19,9 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
         /// <summary>
         /// ********
         /// </summary>
-        public async Task<List<MessageListDTO>> GetMessageList(int? studentId)
+        public async Task<List<MessageListDTO>> GetMessageList(int? classId)
         {
-            return await GetListQueryable(p => !p.IsDeleted && (p.StudentId == studentId || p.StudentId == null), p => p.TeacherFK)
+            return await GetListQueryable(p => !p.IsDeleted && (p.ClassId == classId || p.ClassId == null), p => p.TeacherFK)
                  .Select(p => new MessageListDTO
                  {
                      Id = p.Id,
@@ -31,12 +31,13 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
                  }).ToListAsync();
         }
 
+
         public async Task UpdateMessage(int id, MessageUpdateDTO messageUpdate)
         {
             var currentMessage = await GetByIdAsync(id);
             Update(currentMessage);
             currentMessage.Desc = messageUpdate.Desc;
-            currentMessage.StudentId = messageUpdate.StudentId;
+            currentMessage.ClassId = messageUpdate.ClassId;
             currentMessage.TeacherId = messageUpdate.TeacherId;
         }
     }
