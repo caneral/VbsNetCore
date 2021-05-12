@@ -30,6 +30,18 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
                      TeacherSurname = p.TeacherFK.Surname
                  }).ToListAsync();
         }
+        public async Task<List<MessageListDTO>> GetMessageWithClass(int classId)
+        {
+
+            return await GetListQueryable(p => !p.IsDeleted && (p.ClassId == classId), p => p.ClassFK)
+                     .Select(p => new MessageListDTO
+                     {
+                         Id = p.Id,
+                         Desc = p.Desc,
+                         TeacherName = p.TeacherFK.Name,
+                         TeacherSurname = p.TeacherFK.Surname
+                     }).ToListAsync();
+        }
 
 
         public async Task UpdateMessage(int id, MessageUpdateDTO messageUpdate)

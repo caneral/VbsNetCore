@@ -36,6 +36,18 @@ namespace StudentInfo.WebApi.Controllers
         {
             return Ok(await _messageService.GetMessageList(studentId));
         }
+
+        [HttpGet("MessageListWithClass/{userId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+
+        public async Task<ActionResult<string>> ListHomeWorkWithClass(int userId)
+        {
+            var result = await _messageService.GetMessageWithClass(userId);
+            return Ok(result);
+        }
+
+
+
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

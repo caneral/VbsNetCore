@@ -43,6 +43,13 @@ namespace StudentInfo.Business.Concrete.Auth
             return await _unitOfWork.Messages.GetMessageList(studentId);
         }
 
+        public async Task<List<MessageListDTO>> GetMessageWithClass(int userId)
+        {
+            var tc = _unitOfWork.AppUsers.GetAsync(p => p.Id == userId);
+            var userClass = _unitOfWork.Students.GetAsync(p => p.TCNumber == tc.Result.TCNumber);
+            return await _unitOfWork.Messages.GetMessageWithClass(userClass.Result.ClassId);
+        }
+
         public Task<int> UpdateMessage(int id, MessageUpdateDTO messageUpdate)
         {
            _unitOfWork.Messages.UpdateMessage(id, messageUpdate);
