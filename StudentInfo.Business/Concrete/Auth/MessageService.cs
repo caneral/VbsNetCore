@@ -23,7 +23,9 @@ namespace StudentInfo.Business.Concrete.Auth
         /// </summary>
         public async Task<int> AddMessage(MessageAddDTO messageAddDTO)
         {
-            messageAddDTO.TeacherId = 1;
+            var teacherTc = _unitOfWork.AppUsers.GetAsync(p => p.Id == messageAddDTO.TeacherId);
+            var teacherList = _unitOfWork.Teachers.GetAsync(p => p.TCNumber == teacherTc.Result.TCNumber);
+            messageAddDTO.TeacherId = teacherList.Result.Id;
             var message = _mapper.Map<MessageAddDTO, Message>(messageAddDTO);
             
             await _unitOfWork.Messages.AddAsync(message);
