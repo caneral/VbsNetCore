@@ -227,9 +227,6 @@ namespace StudentInfo.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClassFKId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ClassId")
                         .HasColumnType("int");
 
@@ -261,7 +258,7 @@ namespace StudentInfo.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClassFKId");
+                    b.HasIndex("ClassId");
 
                     b.HasIndex("TeacherId");
 
@@ -485,9 +482,11 @@ namespace StudentInfo.DataAccess.Migrations
 
             modelBuilder.Entity("StudentInfo.Entity.Entity.Message", b =>
                 {
-                    b.HasOne("StudentInfo.Entity.Entity.Student", "ClassFK")
+                    b.HasOne("StudentInfo.Entity.Entity.Class", "ClassFK")
                         .WithMany()
-                        .HasForeignKey("ClassFKId");
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("StudentInfo.Entity.Entity.Teacher", "TeacherFK")
                         .WithMany()

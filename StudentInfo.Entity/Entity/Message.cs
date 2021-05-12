@@ -22,7 +22,7 @@ namespace StudentInfo.Entity.Entity
         /// Sınıf Id
         /// </summary>
         public int ClassId { get; set; }
-        public Student ClassFK { get; set; }
+        public Class ClassFK { get; set; }
 
         /// <summary>
         /// Öğretmen Id
