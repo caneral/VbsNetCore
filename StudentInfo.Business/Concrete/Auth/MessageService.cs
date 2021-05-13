@@ -57,7 +57,7 @@ namespace StudentInfo.Business.Concrete.Auth
         }
         public Task<int> GetTotalMessageCount()
         {
-            return _unitOfWork.HomeWorks.GetTotalMessageCount();
+            return _unitOfWork.Messages.GetTotalMessageCount();
         }
     }
 }
