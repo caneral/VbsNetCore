@@ -52,5 +52,9 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
             currentMessage.ClassId = messageUpdate.ClassId;
             currentMessage.TeacherId = messageUpdate.TeacherId;
         }
+        public async Task<int> GetTotalMessageCount()
+        {
+            return await CountAsync(p => !p.IsDeleted);
+        }
     }
 }

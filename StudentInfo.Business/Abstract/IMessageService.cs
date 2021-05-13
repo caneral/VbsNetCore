@@ -16,6 +16,8 @@ namespace StudentInfo.Business.Abstract
 
         Task<int> UpdateMessage(int id, MessageUpdateDTO messageUpdate);
         Task<List<MessageListDTO>> GetMessageWithClass(int userId);
+        Task<int> GetTotalMessageCount();
+
 
     }
 }

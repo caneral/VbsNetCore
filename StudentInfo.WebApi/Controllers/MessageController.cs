@@ -68,5 +68,12 @@ namespace StudentInfo.WebApi.Controllers
             }
             return BadRequest();
         }
+        [HttpGet("GetTotalMessageCount")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<string>> GetTotalMessageCount()
+        {
+            var result = await _messageService.GetTotalMessageCount();
+            return Ok(result);
+        }
     }
 }

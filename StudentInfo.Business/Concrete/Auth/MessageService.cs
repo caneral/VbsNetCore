@@ -55,5 +55,9 @@ namespace StudentInfo.Business.Concrete.Auth
            _unitOfWork.Messages.UpdateMessage(id, messageUpdate);
             return _unitOfWork.SaveAsync();
         }
+        public Task<int> GetTotalMessageCount()
+        {
+            return _unitOfWork.HomeWorks.GetTotalMessageCount();
+        }
     }
 }

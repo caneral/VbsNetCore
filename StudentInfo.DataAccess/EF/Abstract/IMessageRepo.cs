@@ -12,6 +12,8 @@ namespace StudentInfo.DataAccess.EF.Abstract
         Task<List<MessageListDTO>> GetMessageList(int? studentId);
         Task UpdateMessage(int id, MessageUpdateDTO messageUpdate);
         Task<List<MessageListDTO>> GetMessageWithClass(int classId);
+        Task<int> GetTotalMessageCount();
+
 
     }
 }
