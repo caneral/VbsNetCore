@@ -192,6 +192,9 @@ namespace StudentInfo.DataAccess.Migrations
                     b.Property<int>("CreatedUserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("FileId")
+                        .HasColumnType("text");
+
                     b.Property<string>("HomeworkDesc")
                         .IsRequired()
                         .HasMaxLength(255)

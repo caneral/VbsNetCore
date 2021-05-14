@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using StudentInfo.Business.Abstract;
 using StudentInfo.Business.Concrete.Auth;
+using StudentInfo.DataAccess.MongoDB;
 using StudentInfo.Infrastructure.DI;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,9 @@ namespace StudentInfo.WebApi
             services.AddScoped<IAuthService, AuthService>();
             services.AddPersistence();
             services.AddService();
+            services.AddScoped<MongoDbContext>();
+            services.Configure<MongoOptions>(Configuration.GetSection("MongoOptions"));
+
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
             services.Configure<TokenOptions>(Configuration.GetSection("TokenOptions"));

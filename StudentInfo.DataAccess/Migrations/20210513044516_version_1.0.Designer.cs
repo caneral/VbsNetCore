@@ -9,7 +9,7 @@ using StudentInfo.DataAccess.EF.Concrete.Context;
 namespace StudentInfo.DataAccess.Migrations
 {
     [DbContext(typeof(StudentInfoDbContext))]
-    [Migration("20210512123917_version_1.0")]
+    [Migration("20210513044516_version_1.0")]
     partial class version_10
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -193,6 +193,9 @@ namespace StudentInfo.DataAccess.Migrations
 
                     b.Property<int>("CreatedUserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("FileId")
+                        .HasColumnType("text");
 
                     b.Property<string>("HomeworkDesc")
                         .IsRequired()

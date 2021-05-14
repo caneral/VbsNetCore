@@ -155,6 +155,7 @@ namespace StudentInfo.DataAccess.Migrations
                     HomeworkSubject = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     HomeworkDesc = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
                     ClassId = table.Column<int>(type: "int", nullable: false),
+                    FileId = table.Column<string>(type: "text", nullable: true),
                     CreatedUserId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false),
                     ModifiedUserId = table.Column<int>(type: "int", nullable: true),

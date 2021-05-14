@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using StudentInfo.DataAccess.EF.Concrete.Context;
+using StudentInfo.DataAccess.MongoDB;
 using StudentInfo.DataAccess.UOW;
 
 namespace StudentInfo.Infrastructure.DI

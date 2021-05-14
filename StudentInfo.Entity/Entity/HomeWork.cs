@@ -15,6 +15,7 @@ namespace StudentInfo.Entity.Entity
         public string HomeworkDesc { get; set; }
         public int ClassId { get; set; }
         public Class ClassFK { get; set; }
+        public string FileId { get; set; }
         public int CreatedUserId { get; set; }
         public DateTime CreatedDate { get; set; }
         public int? ModifiedUserId { get; set; }
