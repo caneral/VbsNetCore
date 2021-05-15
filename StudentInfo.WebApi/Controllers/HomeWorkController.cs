@@ -30,18 +30,25 @@ namespace StudentInfo.WebApi.Controllers
         }
 
         [HttpPost("HomeWorkAdd")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<string>> AddHomeWork(HomeWorkAddDTO homeWorkAddDTO)
         {
             var result = await _homeWorkService.AddHomeWork(homeWorkAddDTO);
-            return result > 0 ? StatusCode(StatusCodes.Status201Created) : BadRequest();
+            int lastAddedId = 0;
+            if (result > 0)
+            {
+                var abc = await _homeWorkService.GetLastAddedHomeWork();
+                lastAddedId = abc[0].Id;
+            }
+            return result > 0 ? Ok(lastAddedId) : BadRequest();
         }
 
         [HttpPost("HomeWorkFileAdd")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<string>> AddHomeWorkFile(IFormFile file)
+        public async Task<ActionResult<string>> AddHomeWorkFile(int odevId,IFormFile file)
         {
             var homeWorkCollection = _mongoDbContext.GetCollection<HomeWorkFiles>();
             using (var memoryStream = new MemoryStream())
@@ -54,19 +61,26 @@ namespace StudentInfo.WebApi.Controllers
 
                 };
                 homeWorkCollection.InsertOne(homeWorkFile);
+                var hFile = await _homeWorkService.UpdateHomeWorkFile(odevId, homeWorkFile.Id.ToString());
+                if (hFile == -1)
+                {
+                    return Ok(new { code = StatusCode(1001), type = "error" });
+                }
+
             }
-            return Ok();
+            return Ok("Yükleme başarılı");
         }
 
         [HttpGet("GetHomeworkFile")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<string>> GetHomeworkFile()
+        public async Task<ActionResult<string>> GetHomeworkFile(int odevId)
         {
             var list = new List<string>();
-            var homeworkfileId = "609e94b41a287df51a514791";
+            var homeworkFileId = await _homeWorkService.GetHomeworkFile(odevId);
+
             var homeworkCollection = _mongoDbContext.GetCollection<HomeWorkFiles>();
-            var homeworkFile = await homeworkCollection.Find(p => p.Id == ObjectId.Parse(homeworkfileId)).FirstOrDefaultAsync();
+            var homeworkFile = await homeworkCollection.Find(p => p.Id == ObjectId.Parse(homeworkFileId)).FirstOrDefaultAsync();
 
 
             return File(homeworkFile.Content, "image/jpg");
@@ -109,6 +123,14 @@ namespace StudentInfo.WebApi.Controllers
         public async Task<ActionResult<string>> GetLastAdded5HomeWorks()
         {
             var result = await _homeWorkService.GetLastAdded5HomeWorks();
+            return Ok(result);
+        }
+
+        [HttpGet("GetLastAddedHomeWork")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<string>> GetLastAddedHomeWork()
+        {
+            var result = await _homeWorkService.GetLastAddedHomeWork();
             return Ok(result);
         }
     }

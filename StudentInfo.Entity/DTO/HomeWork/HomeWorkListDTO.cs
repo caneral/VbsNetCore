@@ -13,5 +13,6 @@ namespace StudentInfo.Entity.DTO.HomeWork
         public string HomeworkSubject { get; set; }
         public string HomeworkDesc { get; set; }
         public string ClassName { get; set; }
+        public string FileId { get; set; }
     }
 }

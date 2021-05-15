@@ -16,7 +16,10 @@ namespace StudentInfo.Business.Abstract
         /// <returns></returns>
         Task<List<HomeWorkListDTO>> GetHomeWorkWithClass(int userId);
         Task<int> GetTotalHomeWorkCount();
+        Task<int> UpdateHomeWorkFile(int odevId, string homeWorkFileId);
         Task<List<HomeWorkListDTO>> GetLastAdded5HomeWorks();
+        Task<List<HomeWorkListDTO>> GetLastAddedHomeWork();
+        Task<string> GetHomeworkFile(int odevId);
         /// <summary>
         /// Mesajları Listeleme (Öğrenci id varsa özel mesajları da dahil et)
         /// </summary>

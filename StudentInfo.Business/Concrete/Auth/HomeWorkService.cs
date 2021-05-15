@@ -51,5 +51,34 @@ namespace StudentInfo.Business.Concrete.Auth
         {
             return await _unitOfWork.HomeWorks.GetLastAdded5HomeWorks();
         }
+        public async Task<List<HomeWorkListDTO>> GetLastAddedHomeWork()
+        {
+            return await _unitOfWork.HomeWorks.GetLastAddedHomeWork();
+        }
+        public async Task<int> UpdateHomeWorkFile(int odevId, string homeWorkFileId)
+        {
+            var homeworkObject = await _unitOfWork.HomeWorks.GetByIdAsync(odevId);
+            if (homeworkObject == null)
+            {
+                return await Task.FromResult(-1);
+            }
+
+            homeworkObject.FileId = homeWorkFileId;
+            _unitOfWork.HomeWorks.Update(homeworkObject);
+            return await _unitOfWork.SaveAsync();
+        }
+        public async Task<string> GetHomeworkFile(int odevId)
+        {
+            var homeworkFileId = await _unitOfWork.HomeWorks.GetQueryable(p => !p.IsDeleted && p.Id == odevId)
+                .Select(p => p.FileId)
+                .SingleOrDefaultAsync();
+
+            if (string.IsNullOrWhiteSpace(homeworkFileId))
+            {
+                return await Task.FromResult("-1");
+            }
+
+            return homeworkFileId;
+        }
     }
 }

@@ -41,7 +41,9 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
                          CourseName = p.CourseName,
                          HomeworkSubject = p.HomeworkSubject,
                          HomeworkDesc = p.HomeworkDesc,
-                         ClassName = p.ClassFK.Name
+                         ClassName = p.ClassFK.Name,
+                         FileId = p.FileId
+                        
                      }).ToListAsync();
         }
         public async Task<int> GetTotalHomeWorkCount()
@@ -63,7 +65,22 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
                     ClassName = p.ClassFK.Name
                 }).ToListAsync();
         }
-
+        public async Task<List<HomeWorkListDTO>> GetLastAddedHomeWork()
+        {
+            return await GetListQueryable(p => !p.IsDeleted, p => p.ClassFK)
+                .OrderByDescending(p => p.Id)
+                .Take(1)
+                .Select(p => new HomeWorkListDTO
+                {
+                    Id = p.Id,
+                    CourseName = p.CourseName,
+                    HomeworkSubject = p.HomeworkSubject,
+                    HomeworkDesc = p.HomeworkDesc,
+                    ClassName = p.ClassFK.Name
+                }).ToListAsync();
+        }
+        
+        
 
     }
 }
