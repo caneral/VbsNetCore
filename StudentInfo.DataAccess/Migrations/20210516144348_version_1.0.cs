@@ -245,6 +245,39 @@ namespace StudentInfo.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Meets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    MeetDate = table.Column<string>(type: "text", nullable: false),
+                    StudentId = table.Column<int>(type: "int", nullable: false),
+                    TeacherId = table.Column<int>(type: "int", nullable: false),
+                    CreatedUserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    ModifiedUserId = table.Column<int>(type: "int", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Meets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Meets_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Meets_Teachers_TeacherId",
+                        column: x => x.TeacherId,
+                        principalTable: "Teachers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "StudentTeachers",
                 columns: table => new
                 {
@@ -292,6 +325,16 @@ namespace StudentInfo.DataAccess.Migrations
                 column: "ClassId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Meets_StudentId",
+                table: "Meets",
+                column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Meets_TeacherId",
+                table: "Meets",
+                column: "TeacherId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Messages_ClassId",
                 table: "Messages",
                 column: "ClassId");
@@ -329,6 +372,9 @@ namespace StudentInfo.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "HomeWorks");
+
+            migrationBuilder.DropTable(
+                name: "Meets");
 
             migrationBuilder.DropTable(
                 name: "Messages");

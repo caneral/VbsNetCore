@@ -24,6 +24,7 @@ namespace StudentInfo.DataAccess.EF.Concrete.Context
         public DbSet<Message> Messages { get; set; }
         public DbSet<HomeWork> HomeWorks { get; set; }
         public DbSet<Class> Classes { get; set; }
+        public DbSet<Meet> Meets { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<AppClaim> AppClaims { get; set; }
         public DbSet<AppUserClaim> AppUserClaims { get; set; }

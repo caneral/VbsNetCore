@@ -224,6 +224,49 @@ namespace StudentInfo.DataAccess.Migrations
                     b.ToTable("HomeWorks");
                 });
 
+            modelBuilder.Entity("StudentInfo.Entity.Entity.Meet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("CreatedUserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("MeetDate")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<int?>("ModifiedUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("Meets");
+                });
+
             modelBuilder.Entity("StudentInfo.Entity.Entity.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -483,6 +526,25 @@ namespace StudentInfo.DataAccess.Migrations
                     b.Navigation("ClassFK");
                 });
 
+            modelBuilder.Entity("StudentInfo.Entity.Entity.Meet", b =>
+                {
+                    b.HasOne("StudentInfo.Entity.Entity.Student", "StudentFK")
+                        .WithMany("Meets")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StudentInfo.Entity.Entity.Teacher", "TeacherFK")
+                        .WithMany("Meets")
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("StudentFK");
+
+                    b.Navigation("TeacherFK");
+                });
+
             modelBuilder.Entity("StudentInfo.Entity.Entity.Message", b =>
                 {
                     b.HasOne("StudentInfo.Entity.Entity.Class", "ClassFK")
@@ -564,11 +626,15 @@ namespace StudentInfo.DataAccess.Migrations
 
             modelBuilder.Entity("StudentInfo.Entity.Entity.Student", b =>
                 {
+                    b.Navigation("Meets");
+
                     b.Navigation("StudentTeachers");
                 });
 
             modelBuilder.Entity("StudentInfo.Entity.Entity.Teacher", b =>
                 {
+                    b.Navigation("Meets");
+
                     b.Navigation("StudentTeachers");
                 });
 #pragma warning restore 612, 618

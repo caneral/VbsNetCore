@@ -25,6 +25,7 @@ namespace StudentInfo.Entity.Entity
         /// Öğretmen T.C. Kimlik Numarası
         /// </summary>
         public string TCNumber { get; set; }
+        public ICollection<Meet> Meets { get; set; }
         public ICollection<StudentTeacher> StudentTeachers { get; set; }
         public int CreatedUserId { get; set; }
         public DateTime CreatedDate { get; set; }

@@ -1,0 +1,15 @@
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\bin\Debug\net5.0\StudentInfo.Entity.deps.json
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\bin\Debug\net5.0\StudentInfo.Entity.dll
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\bin\Debug\net5.0\ref\StudentInfo.Entity.dll
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\bin\Debug\net5.0\StudentInfo.Entity.pdb
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\bin\Debug\net5.0\ApplicationCore.dll
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\bin\Debug\net5.0\ApplicationCore.pdb
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\obj\Debug\net5.0\StudentInfo.Entity.csprojAssemblyReference.cache
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\obj\Debug\net5.0\StudentInfo.Entity.GeneratedMSBuildEditorConfig.editorconfig
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\obj\Debug\net5.0\StudentInfo.Entity.AssemblyInfoInputs.cache
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\obj\Debug\net5.0\StudentInfo.Entity.AssemblyInfo.cs
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\obj\Debug\net5.0\StudentInfo.Entity.csproj.CoreCompileInputs.cache
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\obj\Debug\net5.0\StudentInfo.Entity.csproj.CopyComplete
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\obj\Debug\net5.0\StudentInfo.Entity.dll
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\obj\Debug\net5.0\ref\StudentInfo.Entity.dll
+D:\BackEnd\StudentInfoApp\StudentInfo.Entity\obj\Debug\net5.0\StudentInfo.Entity.pdb

@@ -10,6 +10,7 @@ namespace StudentInfo.DataAccess.UOW
         IParentRepo Parents { get; }
         IStudentRepo Students { get; }
         IStudentTeacherRepo StudentTeachers { get; }
+        IMeetRepo Meets { get; }
         ITeacherRepo Teachers { get; }
         IHomeWorkRepo HomeWorks { get; }
         IClassRepo Classes { get; }

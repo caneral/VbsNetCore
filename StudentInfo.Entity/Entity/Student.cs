@@ -46,6 +46,7 @@ namespace StudentInfo.Entity.Entity
         public Parent ParentFK { get; set; }
 
         public ICollection<StudentTeacher> StudentTeachers { get; set; }
+        public ICollection<Meet> Meets { get; set; }
         public int CreatedUserId { get; set; }
         public DateTime CreatedDate { get; set; }
         public int? ModifiedUserId { get; set; }
