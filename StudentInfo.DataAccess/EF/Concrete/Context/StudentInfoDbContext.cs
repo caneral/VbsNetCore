@@ -20,7 +20,6 @@ namespace StudentInfo.DataAccess.EF.Concrete.Context
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Parent> Parents { get; set; }
-        public DbSet<StudentTeacher> StudentTeachers { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<HomeWork> HomeWorks { get; set; }
         public DbSet<Class> Classes { get; set; }

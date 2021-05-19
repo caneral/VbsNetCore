@@ -17,7 +17,6 @@ namespace StudentInfo.DataAccess.EF.Concrete.Configuration
             builder.Property(s => s.Number).HasMaxLength(11).IsRequired();
 
             builder.HasOne(s => s.ParentFK).WithMany(s => s.Students).HasForeignKey(s => s.ParentId);
-            builder.HasMany(s => s.StudentTeachers).WithOne(s => s.StudentFK).HasForeignKey(s => s.StudentId);
             builder.HasMany(s => s.Meets).WithOne(s => s.StudentFK).HasForeignKey(s => s.StudentId);
             builder.HasOne(s => s.ClassFK).WithMany(s => s.Students).HasForeignKey(s => s.ClassId);
         }

@@ -15,7 +15,6 @@ namespace StudentInfo.DataAccess.EF.Concrete.Configuration
             builder.Property(t => t.Name).HasMaxLength(50).IsRequired();
             builder.Property(t => t.Surname).HasMaxLength(50).IsRequired();
 
-            builder.HasMany(t => t.StudentTeachers).WithOne(t => t.TeacherFK).HasForeignKey(t => t.TeacherId);
             builder.HasMany(t => t.Meets).WithOne(t => t.TeacherFK).HasForeignKey(t => t.TeacherId);
         }
     }

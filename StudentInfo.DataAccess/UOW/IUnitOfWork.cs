@@ -9,7 +9,6 @@ namespace StudentInfo.DataAccess.UOW
         IMessageRepo Messages { get; }
         IParentRepo Parents { get; }
         IStudentRepo Students { get; }
-        IStudentTeacherRepo StudentTeachers { get; }
         IMeetRepo Meets { get; }
         ITeacherRepo Teachers { get; }
         IHomeWorkRepo HomeWorks { get; }

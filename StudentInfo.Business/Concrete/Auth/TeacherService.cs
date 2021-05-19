@@ -18,11 +18,7 @@ namespace StudentInfo.Business.Concrete.Auth
             _mapper = mapper;
         }
 
-        public async Task<int> AddStudentTeacher(int studentId, int teacherId)
-        {
-            await _unitOfWork.StudentTeachers.AddStudentTeacher(teacherId, studentId);
-            return await _unitOfWork.SaveAsync();
-        }
+        
 
         public async Task<int> AddTeacher(TeacherAddDTO teacherAddDTO)
         {

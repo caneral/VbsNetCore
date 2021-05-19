@@ -14,7 +14,6 @@ namespace StudentInfo.DataAccess.UOW
         private EFMessageRepo _messageRepo;
         private EFParentRepo _parentRepo;
         private EFStudentRepo _studentRepo;
-        private EFStudentTeacherRepo _studentTeacherRepo;
         private EFMeetRepo _meetRepo;
         private EFTeacherRepo _teacherRepo;
         private EFHomeWorkRepo _homeWorkRepo;
@@ -26,7 +25,6 @@ namespace StudentInfo.DataAccess.UOW
         public IMessageRepo Messages => _messageRepo ??= new EFMessageRepo(_dbContext);
         public IParentRepo Parents => _parentRepo ??= new EFParentRepo(_dbContext);
         public IStudentRepo Students => _studentRepo ??= new EFStudentRepo(_dbContext);
-        public IStudentTeacherRepo StudentTeachers => _studentTeacherRepo ??= new EFStudentTeacherRepo(_dbContext);
         public IMeetRepo Meets => _meetRepo ??= new EFMeetRepo(_dbContext);
         public ITeacherRepo Teachers => _teacherRepo ??= new EFTeacherRepo(_dbContext);
         public IHomeWorkRepo HomeWorks => _homeWorkRepo ??= new EFHomeWorkRepo(_dbContext);

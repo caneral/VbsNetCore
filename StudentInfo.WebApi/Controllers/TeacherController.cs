@@ -26,14 +26,7 @@ namespace StudentInfo.WebApi.Controllers
             return result > 0 ? StatusCode(StatusCodes.Status201Created) : BadRequest();
         }
 
-        [HttpPost("TeacherStudentAdd")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<string>> AddStudentTeacher(int studentId, int teacherId)
-        {
-            var result = await _teacherService.AddStudentTeacher(studentId, teacherId);
-            return result > 0 ? StatusCode(StatusCodes.Status201Created) : BadRequest();
-        }
+        
 
     }
 }
