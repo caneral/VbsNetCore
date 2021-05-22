@@ -27,7 +27,7 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
                     MeetDate = p.MeetDate,
                     TeacherFullName = $"{p.TeacherFK.Name}" + " " + $"{p.TeacherFK.Surname}",
                     StudentId = p.StudentId
-                }).SingleOrDefaultAsync();
+                }).FirstOrDefaultAsync();
         }
     }
 }
