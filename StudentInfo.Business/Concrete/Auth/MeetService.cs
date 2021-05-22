@@ -34,7 +34,9 @@ namespace StudentInfo.Business.Concrete.Auth
 
         public async Task<MeetDTO> GetMeetById(int studentId)
         {
-            return await _unitOfWork.Meets.GetMeetById(studentId);
+            var tc = _unitOfWork.AppUsers.GetAsync(p => p.Id == studentId);
+            var user = _unitOfWork.Students.GetAsync(p => p.TCNumber == tc.Result.TCNumber);
+            return await _unitOfWork.Meets.GetMeetById(user.Result.Id);
         }
     }
 }
