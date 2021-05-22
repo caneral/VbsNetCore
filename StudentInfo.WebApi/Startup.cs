@@ -82,14 +82,14 @@ namespace StudentInfo.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseSwagger(c =>
-                //{
-                //    c.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
-                //    {
-                //        swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"https://{"/vbsadmin"}" } };
-                //    });
+                app.UseSwagger(c =>
+                {
+                    c.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
+                    {
+                        swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"https://{"/vbsadmin"}" } };
+                    });
 
-                //});
+                });
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
