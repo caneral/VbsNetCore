@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentInfo.Entity.DTO.Meet
 {
-    public class MeetListDTO
+    public class MeetDTO
     {
         public string MeetDate { get; set; }
         public int StudentId { get; set; }

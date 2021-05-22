@@ -10,7 +10,7 @@ namespace StudentInfo.Business.Abstract
     public interface IMeetService
     {
         Task<int> AddMeet(MeetAddDTO meetAddDTO);
-        //Task<List<MeetListDTO>> GetMeetList();
+        Task<MeetDTO> GetMeetById(int studentId);
 
 
     }

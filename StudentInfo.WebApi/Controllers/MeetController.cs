@@ -27,5 +27,12 @@ namespace StudentInfo.WebApi.Controllers
             var result = await _meetService.AddMeet(meetAddDTO);
             return result > 0 ? StatusCode(StatusCodes.Status201Created) : BadRequest();
         }
+
+        [HttpGet("GetMeetById/{studentId}")]
+        public async Task<ActionResult<MeetDTO>> GetMeetById(int studentId)
+        {
+            var result = await _meetService.GetMeetById(studentId);
+            return Ok(result);
+        }
     }
 }

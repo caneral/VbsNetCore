@@ -32,9 +32,9 @@ namespace StudentInfo.Business.Concrete.Auth
             return await _unitOfWork.SaveAsync();
         }
 
-        //public Task<List<MeetListDTO>> GetMeetList()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public async Task<MeetDTO> GetMeetById(int studentId)
+        {
+            return await _unitOfWork.Meets.GetMeetById(studentId);
+        }
     }
 }
