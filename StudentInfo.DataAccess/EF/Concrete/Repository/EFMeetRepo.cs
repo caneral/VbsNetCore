@@ -22,6 +22,8 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
         public async Task<MeetDTO> GetMeetById(int studentId)
         {
             return await GetQueryable(p => !p.IsDeleted && p.StudentId == studentId)
+                .OrderByDescending(p => p.Id)
+                .Take(1)
                 .Select(p => new MeetDTO
                 {
                     MeetDate = p.MeetDate,
