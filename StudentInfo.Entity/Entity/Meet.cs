@@ -11,6 +11,7 @@ namespace StudentInfo.Entity.Entity
     {
         public int Id { get; set; }
         public string MeetDate { get; set; }
+        public int IsOkay { get; set; }
         public int StudentId { get; set; }
         public Student StudentFK { get; set; }
         public int TeacherId { get; set; }

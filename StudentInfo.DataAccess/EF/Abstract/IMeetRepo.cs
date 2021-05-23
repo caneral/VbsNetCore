@@ -12,6 +12,8 @@ namespace StudentInfo.DataAccess.EF.Abstract
 {
     public interface IMeetRepo: IBaseRepo<Meet>
     {
-        Task<MeetDTO> GetMeetById(int studentId); 
+        Task<MeetDTO> GetMeetById(int studentId);
+        Task UpdateMeet(int id);
+
     }
 }

@@ -34,5 +34,12 @@ namespace StudentInfo.WebApi.Controllers
             var result = await _meetService.GetMeetById(studentId);
             return Ok(result);
         }
+
+        [HttpPut("UpdateMeet/{id}")]
+        public async Task<ActionResult> UpdateMeet(int id)
+        {
+            var result = await _meetService.UpdateMeetAsync(id);
+            return Ok(result);
+        }
     }
 }

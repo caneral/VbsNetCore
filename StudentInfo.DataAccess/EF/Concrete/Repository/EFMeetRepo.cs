@@ -21,15 +21,26 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
         
         public async Task<MeetDTO> GetMeetById(int studentId)
         {
-            return await GetQueryable(p => !p.IsDeleted && p.StudentId == studentId)
+            return await GetQueryable(p => !p.IsDeleted && p.StudentId == studentId && p.IsOkay == 0)
                 .OrderByDescending(p => p.Id)
                 .Take(1)
                 .Select(p => new MeetDTO
                 {
+                    Id = p.Id,
                     MeetDate = p.MeetDate,
                     TeacherFullName = $"{p.TeacherFK.Name}" + " " + $"{p.TeacherFK.Surname}",
                     StudentId = p.StudentId
                 }).FirstOrDefaultAsync();
         }
+
+        public async Task UpdateMeet(int id)
+        {
+            var currentMeet = await GetByIdAsync(id);
+            Update(currentMeet);
+            currentMeet.IsOkay = 1;
+            currentMeet.ModifiedDate = DateTime.Now;
+        }
+
+       
     }
 }

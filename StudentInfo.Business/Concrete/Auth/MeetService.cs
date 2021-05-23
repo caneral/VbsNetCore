@@ -38,5 +38,12 @@ namespace StudentInfo.Business.Concrete.Auth
             var user = _unitOfWork.Students.GetAsync(p => p.TCNumber == tc.Result.TCNumber);
             return await _unitOfWork.Meets.GetMeetById(user.Result.Id);
         }
+
+        public async Task<int> UpdateMeetAsync(int id)
+        {
+            _unitOfWork.Meets.UpdateMeet(id);
+            return await _unitOfWork.SaveAsync();
+
+        }
     }
 }
