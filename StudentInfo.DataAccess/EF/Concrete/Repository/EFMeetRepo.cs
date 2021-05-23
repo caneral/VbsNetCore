@@ -42,7 +42,9 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
                     MeetDate = p.MeetDate,
                     TeacherFullName = $"{p.TeacherFK.Name}" + " " + $"{p.TeacherFK.Surname}",
                     StudentFullName = $"{p.StudentFK.Name}" + " " + $"{p.StudentFK.Surname}",
-                    StudentNumber = p.StudentFK.Number
+                    StudentNumber = p.StudentFK.Number,
+                    IsOkay = p.IsOkay
+                    
                 }).ToListAsync();
         }
 
