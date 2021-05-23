@@ -35,6 +35,13 @@ namespace StudentInfo.WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetMeetList")]
+        public async Task<ActionResult<MeetListDTO>> GetMeetList()
+        {
+            var result = await _meetService.GetMeetList();
+            return Ok(result);
+        }
+
         [HttpPut("UpdateMeet/{id}")]
         public async Task<ActionResult> UpdateMeet(int id)
         {

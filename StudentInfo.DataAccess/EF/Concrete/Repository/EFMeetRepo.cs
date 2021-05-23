@@ -33,6 +33,19 @@ namespace StudentInfo.DataAccess.EF.Concrete.Repository
                 }).FirstOrDefaultAsync();
         }
 
+        public async Task<List<MeetListDTO>> GetMeetList()
+        {
+            return await GetListQueryable(p => !p.IsDeleted)
+                .Select(p => new MeetListDTO
+                {
+                    Id = p.Id,
+                    MeetDate = p.MeetDate,
+                    TeacherFullName = $"{p.TeacherFK.Name}" + " " + $"{p.TeacherFK.Surname}",
+                    StudentFullName = $"{p.StudentFK.Name}" + " " + $"{p.StudentFK.Surname}",
+                    StudentNumber = p.StudentFK.Number
+                }).ToListAsync();
+        }
+
         public async Task UpdateMeet(int id)
         {
             var currentMeet = await GetByIdAsync(id);

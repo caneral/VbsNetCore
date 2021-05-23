@@ -12,6 +12,7 @@ namespace StudentInfo.Business.Abstract
         Task<int> AddMeet(MeetAddDTO meetAddDTO);
         Task<MeetDTO> GetMeetById(int studentId);
         Task<int> UpdateMeetAsync(int id);
+        Task<List<MeetListDTO>> GetMeetList();
 
 
 

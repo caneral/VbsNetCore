@@ -14,6 +14,7 @@ namespace StudentInfo.DataAccess.EF.Abstract
     {
         Task<MeetDTO> GetMeetById(int studentId);
         Task UpdateMeet(int id);
+        Task<List<MeetListDTO>> GetMeetList();
 
     }
 }

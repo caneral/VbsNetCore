@@ -39,6 +39,11 @@ namespace StudentInfo.Business.Concrete.Auth
             return await _unitOfWork.Meets.GetMeetById(user.Result.Id);
         }
 
+        public async Task<List<MeetListDTO>> GetMeetList()
+        {
+            return await _unitOfWork.Meets.GetMeetList();
+        } 
+
         public async Task<int> UpdateMeetAsync(int id)
         {
             _unitOfWork.Meets.UpdateMeet(id);
